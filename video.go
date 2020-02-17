@@ -89,10 +89,10 @@ func getVideoInfoFromResponse(resp *http.Response) (video *VideoInfo, err error)
 
 func getInfo(obj map[string]interface{}) (video *VideoInfo, err error) {
 	defer func() {
-		//e := recover()
-		//if e != nil {
-		//	err = fmt.Errorf("%v", e)
-		//}
+		e := recover()
+		if e != nil {
+			err = fmt.Errorf("%v", e)
+		}
 	}()
 	video = &VideoInfo{}
 	video.Title = obj["video_title"].(string)
